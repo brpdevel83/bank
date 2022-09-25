@@ -4,7 +4,7 @@ type CustomerRepositoryStub struct {
 	customers []Customer
 }
 
-func (s CustomerRepositoryStub) finadAll() ([]Customer, error) {
+func (s CustomerRepositoryStub) FinadAll() ([]Customer, error) {
 	return s.customers, nil
 }
 

@@ -6,14 +6,14 @@ type CustomerService interface {
 	GetAllCustomers() ([]domain.Customer, error)
 }
 
-type DefaualtCustomerService struct {
+type DefaultCustomerService struct {
 	repo domain.CustomerRepository
 }
 
-func GetAllCustomers(s DefaualtCustomerService) ([]domain.Customer, error) {
+func (s DefaultCustomerService) GetAllCustomers() ([]domain.Customer, error) {
 	return s.repo.FindAll()
 }
 
-func NewCustomerService(repository domain.CustomerRepository) DefaualtCustomerService {
-	return DefaualtCustomerService{repository}
+func NewCustomerService(repository domain.CustomerRepository) DefaultCustomerService {
+	return DefaultCustomerService{repository}
 }

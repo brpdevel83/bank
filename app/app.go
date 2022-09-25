@@ -4,7 +4,7 @@ import (
 	"log"
 	"net/http"
 
-    "github.com/brpdevel83/bank/domian"
+	domain "github.com/brpdevel83/bank/domian"
 	"github.com/brpdevel83/bank/service"
 	"github.com/gorilla/mux"
 )
@@ -13,7 +13,7 @@ func Start() {
 	//mux := http.NewServeMux()
 	mux := mux.NewRouter()
 
-	ch := CustomerHandlers{service.NewCustomerService(domain.CustomerRepositoryStub())}
+	ch := CustomerHandlers{service.NewCustomerService(domain.NewCustomerRepositoryStub())}
 	mux.HandleFunc("/customers", ch.getAllCustomers).Methods(http.MethodGet)
 
 	//mux.HandleFunc("/greet", greet).Methods(http.MethodGet)
