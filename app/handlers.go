@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"net/http"
 
+	"github.com/brpdevel83/bank/service"
 	"github.com/gorilla/mux"
 )
 
@@ -19,7 +20,11 @@ func greet(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprint(w, "Hello and doing greeting.")
 }
 
-func getAllCustomers(w http.ResponseWriter, r *http.Request) {
+type CustomerHandlers struct {
+	service service.CustomerService
+}
+
+func (ch *CustomerHandlers) getAllCustomers(w http.ResponseWriter, r *http.Request) {
 	customers := []Customer{
 		{"Babak", "Istanbul", "34340"},
 		{"Nuğdiş", "Istanbul", "34340"},
